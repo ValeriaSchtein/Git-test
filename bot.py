@@ -37,3 +37,5 @@ def on_message_received(message: str) -> str:
 
 if __name__ == "__main__":
     main()
+    print("NeiroBot: Привет! Я здесь, чтобы помогать вам (режим ожидания)")
+    print("Заглушка работы: дальше будет искусственный интеллект.")
