@@ -90,6 +90,22 @@ def test_echo_handler_sends_echo_text() -> None:
     assert answer["reply_markup"] is None
 
 
+def test_echo_handler_increments_integer_number() -> None:
+    """Эхо-обработчик должен увеличивать целое число в сообщении на 1."""
+    user_text = "7"
+    message = DummyMessage(text=user_text)
+
+    asyncio.run(echo_handler(message))  # type: ignore[arg-type]
+
+    assert len(message.answers) == 1
+    answer = message.answers[0]
+
+    # Проверяем, что обработчик использует новую логику сервиса:
+    # число "7" превращается в "8".
+    assert answer["text"] == "8"
+    assert answer["reply_markup"] is None
+
+
 def test_cmd_chatgpt_sends_placeholder_text() -> None:
     """Обработчик /chatgpt должен отправлять текст-заглушку из сервиса."""
     message = DummyMessage()

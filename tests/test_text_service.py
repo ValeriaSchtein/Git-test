@@ -27,12 +27,33 @@ def test_build_help_message_contains_commands() -> None:
 
 
 def test_build_echo_reply_returns_same_text() -> None:
-    """Эхо-ответ должен возвращать ровно тот же текст, что и пришёл от пользователя."""
+    """
+    Для обычного текста эхо-ответ должен возвращать
+    ровно тот же текст, что и пришёл от пользователя.
+    """
     user_text = "Пример текста для эхо"
 
     reply = text.build_echo_reply(user_text)
 
     assert reply == user_text
+
+
+def test_build_echo_reply_increments_integer_number() -> None:
+    """Если в эхо приходит целое число, функция должна вернуть число + 1."""
+    user_text = "10"
+
+    reply = text.build_echo_reply(user_text)
+
+    assert reply == "11"
+
+
+def test_build_echo_reply_increments_negative_integer_number() -> None:
+    """Если в эхо приходит отрицательное целое число, также увеличиваем его на 1."""
+    user_text = "-5"
+
+    reply = text.build_echo_reply(user_text)
+
+    assert reply == "-4"
 
 
 def test_build_chatgpt_message_contains_keyword() -> None:
