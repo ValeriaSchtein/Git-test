@@ -11,15 +11,20 @@ def get_main_keyboard() -> ReplyKeyboardMarkup:
     """
     Создаёт основную клавиатуру с кнопками.
 
-    Для простоты делаем две кнопки с командами:
-    /start и /help. При нажатии просто отправляется текст
-    команды, и срабатывают уже существующие обработчики.
+    Для простоты делаем набор кнопок с командами:
+    /help, /chatgpt, /image, /history.
+    При нажатии просто отправляется текст команды,
+    и срабатывают уже существующие обработчики (если они есть).
     """
     keyboard = [
         [
-            KeyboardButton(text="/start"),
             KeyboardButton(text="/help"),
-        ]
+            KeyboardButton(text="/chatgpt"),
+        ],
+        [
+            KeyboardButton(text="/image"),
+            KeyboardButton(text="/history"),
+        ],
     ]
 
     return ReplyKeyboardMarkup(
